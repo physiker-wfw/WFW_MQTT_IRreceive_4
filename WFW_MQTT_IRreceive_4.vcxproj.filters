@@ -16,6 +16,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="WFW_MQTT_IRreceive_4.ino" />
+    <None Include="data\homie\ui_bundle.gz" />
+    <None Include="data\homie\config.json" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="__vm\.WFW_MQTT_IRreceive_4.vsarduino.h">

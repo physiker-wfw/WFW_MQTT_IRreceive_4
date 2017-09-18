@@ -80,7 +80,8 @@ bool commandHandler(const HomieRange& range, const String& value) {
 	if (cmd.startsWith("PAN")) {
 		uint32_t codepan = strtoul(cmd.substring(4, 14).c_str(), NULL, 16);
 		uint16_t add = 0x4004;
-		irsend.sendPanasonic(add, codepan,48U,1);
+		uint16_t repeat = 1;
+		irsend.sendPanasonic(add, codepan);
 		sprintf(message, "%X", codepan);
 		Homie.getLogger() << "PANASONIC code sent: " << message << endl;
 		delayMicroseconds(100000);		// Time to allow for sending a sequence of IR codes

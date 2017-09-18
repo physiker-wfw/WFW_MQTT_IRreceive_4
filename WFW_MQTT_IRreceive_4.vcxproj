@@ -79,6 +79,8 @@
     <ProjectCapability Include="VisualMicro" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="data\homie\config.json" />
+    <None Include="data\homie\ui_bundle.gz" />
     <None Include="WFW_MQTT_IRreceive_4.ino">
       <FileType>CppCode</FileType>
     </None>
