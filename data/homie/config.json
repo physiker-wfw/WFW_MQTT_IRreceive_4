@@ -1,0 +1,22 @@
+{
+  "name": "IR  control",
+  "device_id": "5ccf7f2c8e71",
+  "wifi": {
+    "ssid": "ZKb20b",
+    "password": "02718930936127158404"
+  },
+  "mqtt": {
+    "host": "192.168.178.26",
+    "port": 1883,
+    "base_topic": "/sensor/",
+    "auth": false,
+    "username": "user",
+    "password": "pass"
+  },
+  "ota": {
+    "enabled": false
+  },
+  "settings": {
+    "percentage": 55
+  }
+}
