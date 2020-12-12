@@ -1,6 +1,30 @@
 //Project to control the IR devices by a HOMIE instance.
 //21.08.2017 @ WFW:		Temperature is measured and transmitted via MQTT
 //						IR receiving and sending works.
+
+/* 	/sensor/ircontrol/$homie 2.0.0
+	/sensor/ircontrol/$implementation esp8266
+	/sensor/ircontrol/$implementation/config {"wifi":{"ssid":"ZKb20b"},"mqtt":{"host":"192.168.178.26","port":1883,"base_topic":"/sensor/",           "auth":false},"name":"IR control","ota":{"enabled":true},"device_id":"ircontrol"}
+	/sensor/ircontrol/$implementation/version 2.0.0
+	/sensor/ircontrol/$implementation/ota/enabled true
+	/sensor/ircontrol/$mac 5C:CF:7F:2C:8E:71
+	/sensor/ircontrol/IR1/$type IR send/receive
+	/sensor/ircontrol/IR1/$properties IRreceived,temperature,cmd:settable
+	/sensor/ircontrol/IR1/temperature 21.87
+	/sensor/ircontrol/IR1/IRreceived 20DF10EF
+	/sensor/ircontrol/$name IR control
+	/sensor/ircontrol/$localip 192.168.178.51
+	/sensor/ircontrol/$stats/interval 60
+	/sensor/ircontrol/$stats/signal 72
+	/sensor/ircontrol/$stats/uptime 601343
+	/sensor/ircontrol/$fw/name NaundorfIT_IR
+	/sensor/ircontrol/$fw/version 1.1
+	/sensor/ircontrol/$fw/checksum b59cfe819318f164f64bf9824ce6113a
+	/sensor/ircontrol/$online true
+	/sensor/ircontrol/$stats/signal 70
+	/sensor/ircontrol/$stats/uptime 601403
+ */
+
 #include <Homie.h>
 #include <OneWire.h>
 #include <DallasTemperature.h>
@@ -8,7 +32,8 @@
 #include <IRrecv.h>
 #include <IRsend.h>
 #include <IRutils.h>
-HomieNode IRdeviceDriver("IR1", "IR send/receive");  // It is unclear what these two parameter do
+HomieNode IRdeviceDriver("IR1", "IR send/receive");  // The first parameter defines the name of the 
+//                                                      device. The second comments the type of the device.
 
 #define ONE_WIRE_BUS D6					// Data wire is plugged into port GPIO12 on the Arduino
 OneWire oneWire(ONE_WIRE_BUS);			// Setup a oneWire instance
@@ -30,7 +55,7 @@ char message[24];
 void setup() {
 	Serial.begin(115200);
 	Serial << endl << endl;
-	Homie_setFirmware("NaundorfIT_IR", "1.1");
+	Homie_setFirmware("NaundorfIT_IR", "1.2");
 	Homie_setBrand("NaundorfIT");
 	Homie.setSetupFunction(setupHandler).setLoopFunction(loopHandler);
 	IRdeviceDriver.advertise("IRreceived");
@@ -54,7 +79,7 @@ void loopHandler() {
 		if (checkBound(newTemp, temp, diff)) { 
 			temp = newTemp; 
 			IRdeviceDriver.setProperty("temperature").send(String(temp));
-			Homie.getLogger() << "Temperature: " << temp << " °C" << endl;
+			Homie.getLogger() << "Temperature: " << temp << " ï¿½C" << endl;
 		}
 	}
 	if (irrecv.decode(&results)) {
