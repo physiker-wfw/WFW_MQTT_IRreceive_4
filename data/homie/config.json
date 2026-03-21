@@ -2,7 +2,7 @@
   "name": "IR  control",
   "device_id": "5ccf7f2c8e71",
   "wifi": {
-    "ssid": "ZKb20b",
+    "ssid": "ZKb20b", 
     "password": "02718930936127158404"
   },
   "mqtt": {
