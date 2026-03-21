@@ -32,7 +32,7 @@
 #include <IRrecv.h>
 #include <IRsend.h>
 #include <IRutils.h>
-HomieNode IRdeviceDriver("IR1", "IR send/receive");  // The first parameter defines the name of the 
+HomieNode IRdeviceDriver("IR1", "IR send/receive", "IR send/receive");  // The first parameter defines the name of the 
 //                                                      device. The second comments the type of the device.
 
 #define ONE_WIRE_BUS D6					// Data wire is plugged into port GPIO12 on the Arduino
