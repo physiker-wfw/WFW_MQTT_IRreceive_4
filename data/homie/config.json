@@ -1,6 +1,6 @@
 {
   "name": "IR  control",
-  "device_id": "5ccf7f2c8e71",
+  "device_id": "ircontrol",
   "wifi": {
     "ssid": "ZKb20b", 
     "password": "02718930936127158404"
@@ -14,9 +14,10 @@
     "password": "pass"
   },
   "ota": {
-    "enabled": false
+    "enabled": true
+    
   },
   "settings": {
-    "percentage": 55
+    "percentage": 20
   }
 }
