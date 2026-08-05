@@ -98,7 +98,7 @@ bool commandHandler(const HomieRange& range, const String& value) {
 	}
 
 	if (cmd.startsWith("DELTA")) {
-		Serial.println("Delta >>>" + cmd.substring(6, 10) + "<<<");
+		Serial.println("Delta  >>>" + cmd.substring(6, 10) + "<<<");
 		diff = strtoul(cmd.substring(6, 10).c_str(), NULL, 10) / 100.;
 	}
 	return true;
